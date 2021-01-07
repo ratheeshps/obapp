@@ -19,4 +19,9 @@ namespace obapp.Models
         public decimal Balance { get; set; }
         public string CurrencyName { get; set; }
     }
+    public class BeneficiaryModel
+    {
+        public string BeneficiaryName { get; set; }
+        public string BeneficiaryAccount { get; set; }
+    }
 }

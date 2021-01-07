@@ -24,15 +24,25 @@
            <tbody>
                @foreach (var item in Model)
                {
+              
                    <tr>
-                       <td>@item.AccountNumber</td>
+                       <td>
+                           <form method="post" action="/account">
+                               <input type="hidden" id="AccountNumber" name="AccountNumber" value="@item.AccountNumber"/>
+                               <a href="javascript:void(0)" class="aform">@item.AccountNumber</a>
+                           </form>
+                       </td>
                        <td>@item.AccountType</td>
                        <td>@item.Balance.ToString() @item.CurrencyName </td>
                    </tr>
-
+               
                }
            </tbody>
        </table>
+
+       <p>
+           @Html.ActionLink("Fund Tranfer","Index", "FundTransfer",null,new  {@class="btn btn-primary" })
+       </p>
    }
    else
    {
@@ -43,4 +53,11 @@
        </div>
    }
 
+}
+@section Scripts{ 
+<script>
+    $(".aform").click(function () {
+        $(this).closest("form").submit();
+    });
+</script>
 }

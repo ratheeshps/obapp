@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model obapp.Models.AccountModel
+@{
+    <h1>Account Details</h1>
+    <table class="table table-hover table-bordered table-primary">
+        <tr>
+            <td>Account Holder Name:</td>
+            <td>@Model.AccountName</td>
+            <td>Account Number:</td>
+            <td>@Model.AccountNumber</td>
+        </tr>
+        <tr>
+
+            <td>Account Type:</td>
+            <td>@Model.AccountType</td>
+            <td>Balance:</td>
+            <td>@Model.Balance @Model.CurrencyName</td>
+        </tr>
+      
+    </table>
+    <p>
+        <a href="#" onclick="window.history.go(-1); return false;">back</a>
+    </p>
+}

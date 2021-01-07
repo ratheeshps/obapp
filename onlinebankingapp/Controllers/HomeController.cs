@@ -52,9 +52,8 @@ namespace onlinebankingapp.Controllers
                     result = tempResult.Result;
                    
                     HttpContext.Session.SetString("Token", result);
-                    
-                    TempData["CustomerId"] = model.CustomerID;
-                    //TempData.Keep();
+                    HttpContext.Session.SetString("CustomerId", model.CustomerID);
+
                 }
             }
             if (result != string.Empty)
@@ -65,7 +64,7 @@ namespace onlinebankingapp.Controllers
         {
             string result = string.Empty;
             CustomerModel customerModel = new CustomerModel();
-            customerModel.CustomerId = TempData["CustomerId"].ToString();
+            customerModel.CustomerId = HttpContext.Session.GetString("CustomerId").ToString();
             Task<HttpResponseMessage> response = wrapper.PostAPI(HttpContext.Session.GetString("Token"),
                                         _serviceConnection.Value.EndPoint+ "accounts/GetCustomerAccount",
                                         JsonConvert.SerializeObject(customerModel));

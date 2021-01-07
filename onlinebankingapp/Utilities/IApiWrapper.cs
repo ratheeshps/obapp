@@ -8,7 +8,7 @@ namespace onlinebankingapp.Utilities
     {
         Task<HttpResponseMessage> DeleteAPI(string token, string apiUrl, string contentData);
         Task<HttpResponseMessage> GetAPI(string token, string apiUrl);
-        Task<HttpResponseMessage> PostAPI(string token, string apiUrl, string contentData);
+         Task<HttpResponseMessage>  PostAPI(string token, string apiUrl, string contentData);
         Task<HttpResponseMessage> PostFormDataAPI(string token, string apiUrl, IList<KeyValuePair<string, string>> contentData);
         Task<HttpResponseMessage> PutAPI(string token, string apiUrl, string contentData);
         Task<HttpResponseMessage> SimpleGetAPI(string apiUrl);

@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model obapp.Models.FundTransferModel
+@{
+    <h1>Fund Transfer</h1>
+
+    <div class="col-sm-4">
+        <div class="form-group">
+
+            <label for="exampleInputCus1">From Account</label>
+            @Html.DropDownListFor(x => x.FromAccount,new SelectList( Model.FromAccounts,"Value","Text"), "select", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+
+            <label for="exampleInputCus1">Beneficiary Account</label>
+            @Html.DropDownListFor(x => x.ToAccount, new SelectList(Model.ToAccounts, "Value", "Text"), "select", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+
+            <label for="exampleInputCus1">Amount</label>
+            @Html.TextBoxFor(x=>x.Amount,new  {@class="form-control" })
+        </div>
+
+        <input type="submit" value="Pay Now" class="btn btn-info" />
+
+    </div>
+        }
