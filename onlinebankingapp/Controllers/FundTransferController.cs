@@ -31,6 +31,39 @@ namespace obapp.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        public IActionResult Index(FundTransferModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string result = string.Empty;
+                model.CustomerId = "1";
+                var response = wrapper.PostAPI(HttpContext.Session.GetString("Token"),
+                                            _serviceConnection.Value.EndPoint + "fundtransfer",
+                                            JsonConvert.SerializeObject(model)).GetAwaiter().GetResult();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        Task<string> tempResult = content.ReadAsStringAsync();
+                        result = tempResult.Result;
+                    }
+                    ApiResponse<FundTransferResponse> fundResponse = JsonConvert.DeserializeObject<ApiResponse<FundTransferResponse>>(result.ToString());
+                    TempData["Response"] = fundResponse;
+                    return RedirectToAction("status");
+                }
+            }
+
+
+            //model.FromAccounts = GetFromAccounts();
+            //model.ToAccounts = GetBeneficiaries();
+
+            return View(model);
+        }
+        public IActionResult Status()
+        {
+            return View();
+        }
         private List<SelectListItem> GetFromAccounts() {
             CustomerModel customerModel = new CustomerModel();
             List<SelectListItem> fromAccounts = new List<SelectListItem>();

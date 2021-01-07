@@ -22,7 +22,9 @@ namespace onlinebankingapp.Controllers
 
         public IApiWrapper wrapper { get; }
 
-        public HomeController(ILogger<HomeController> logger,IOptions<ServiceConnection> serviceConnection,IApiWrapper apiWrapper)
+        public HomeController(ILogger<HomeController> logger,
+            IOptions<ServiceConnection> serviceConnection,
+            IApiWrapper apiWrapper)
         {
             _logger = logger;
             _serviceConnection = serviceConnection;
@@ -65,6 +67,7 @@ namespace onlinebankingapp.Controllers
             string result = string.Empty;
             CustomerModel customerModel = new CustomerModel();
             customerModel.CustomerId = HttpContext.Session.GetString("CustomerId").ToString();
+
             Task<HttpResponseMessage> response = wrapper.PostAPI(HttpContext.Session.GetString("Token"),
                                         _serviceConnection.Value.EndPoint+ "accounts/GetCustomerAccount",
                                         JsonConvert.SerializeObject(customerModel));

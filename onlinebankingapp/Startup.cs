@@ -28,7 +28,9 @@ namespace onlinebankingapp
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
             services.Configure<ServiceConnection>(Configuration.GetSection("serviceconnection"));
+            
             services.AddTransient<IApiWrapper, ApiWrapper>();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
