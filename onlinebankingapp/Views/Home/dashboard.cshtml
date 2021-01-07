@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<obapp.Models.AccountModel>
+@{
+   <h1>Account List</h1>
+   @if (Model.Count > 0)
+   {
+       <table class="table table-bordered">
+           <thead>
+               <tr>
+                   <th>
+                       Account Number
+                   </th>
+                   <th>
+                       Account Type
+                   </th>
+                   <th>
+                       Balance
+                   </th>
+                  
+               </tr>
+           </thead>
+           <tbody>
+               @foreach (var item in Model)
+               {
+                   <tr>
+                       <td>@item.AccountNumber</td>
+                       <td>@item.AccountType</td>
+                       <td>@item.Balance.ToString() @item.CurrencyName </td>
+                   </tr>
+
+               }
+           </tbody>
+       </table>
+   }
+   else
+   {
+       <div class="alert alert-danger">
+           <p>
+               No accounts found
+           </p>
+       </div>
+   }
+
+}

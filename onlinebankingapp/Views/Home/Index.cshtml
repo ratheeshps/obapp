@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*@model UserAccessModel*@
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to online banking</h1>
+    @*@using (Html.BeginForm()) {
+              @Html.TextBoxFor(x => x.CustomerID)
+                    @Html.TextBoxFor(x => x.Username)
+                    @Html.PasswordFor(x => x.Password)
+        }*@
+
+
+</div>
+<div class="text-left">
+    <form method="post" action="">
+        <div class="col-sm-4">
+            <div class="form-group">
+              
+                <label for="exampleInputCus1">Customer ID</label>
+                <input type="text" class="form-control" name="CustomerID"  id="CustomerID" aria-describedby="Cus1Help" placeholder="Enter Customer ID">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputCus1">Username</label>
+                <input type="text" class="form-control" id="Username"  name="Username" aria-describedby="Cus1Help" placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
